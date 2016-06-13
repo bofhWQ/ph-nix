@@ -4,13 +4,11 @@ class Base
 	protected $config;
 	public function __construct()
 	{
-		 if(file_exists(dirname(__DIR__).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.__CLASS__))
+		$cf=dirname(__DIR__).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.get_class($this).'.php';	
+		 if(file_exists($cf))
 		 {
-		 	include dirname(__DIR__).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.__CLASS__.'php';
+		 	include $cf;
 		 	$this->config=$config;
-		 }
-		 		
+		 }	
 	}
-	
-	
 }

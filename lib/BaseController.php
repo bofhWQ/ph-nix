@@ -1,5 +1,5 @@
 <?php
-class Controller extends Base
+class BaseController extends Base
 {
 	private  $subpath;
 	

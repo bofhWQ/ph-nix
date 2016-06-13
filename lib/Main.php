@@ -5,7 +5,5 @@ class Main extends Base
 	{
 		$mc=new MainController();
 		print_r($mc);
-	}
-	
-	
+	}	
 }
