@@ -5,11 +5,12 @@ class BaseController extends Base
 	
 	public static function shedule(array $subpath)
 	{
-		$this->subpath=$subpath;
-		$key=array_unshift($this->subpath);
-		if(method_exists($this, $key))
+		
+		$key=array_shift($subpath);
+		$instance=new static();
+		if(method_exists($instance, $key))
 		{
-			$this->$key();
+			$instance->$key();
 		}
 	}
 }
