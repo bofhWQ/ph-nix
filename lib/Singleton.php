@@ -10,6 +10,6 @@ class Singelton
 
 			static::$instance = new static();
 		}
-		return static::$instance();
+		return static::$instance;
 	}
 }

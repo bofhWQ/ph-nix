@@ -1,0 +1,74 @@
+Vorgänger Projekte:
+
+vr|framework
+WQ
+
+Lession learned
+vr|framework:
+Positives:
+- ein Eintrittspunkt
+- Alle Eingaben stehen in $in
+- Alle Ausgaben in $output
+- Paradigma Eingabe  -> Verarbeitung -> Ausgabe ( Ein Header kann auch am Ende der Verarbeitung gesetzt werden )
+- Template bietet echte Trennung von Code und Design
+- Grundlage für Mehrsprachigen Portale ( Inhalt + GUI )
+- Mehrere Firmen mit Kooperationsmöglichkeiten ( keine reine Mandanten! )
+
+Negatives:
+- benötigt zu viel Speicher
+- Template Engine nicht performat
+- nutzt PHP4 Syntax
+- Viel unnützer und redundanter Code
+
+WQ:
+Positives:
+- Performance steht im Vordergrund
+    a) Minimieren der SQL Statments
+    b) Optimieren der SQL Statments
+    c) cachen der Inhalte in der Session
+- Struktur für DB Cluster ( SQL Statments getrennt nach dbread und dbwrite , Fallbackstrategie falls ein Slave ausfällt etc )
+- Multiserver Konzept ( Pic-Server, WWW-Server, DB-Server )
+Negatives:
+- Code Qualität miserabel!
+- Code Qualität miserabel!
+- Code Qualität miserabel!
+- Code Qualität miserabel!
+- Code Qualität miserabel!
+- Code Qualität miserabel!
+
+
+
+Ziele:
+- Sicherheit first
+- Performat ( CPU und RAM )
+- Write Once Run everywhere
+
+
+Design Ziele:
+- OOP
+- PHP7 mit type declarion der Parameter
+- Konvetion statt Konfiguration
+- Selbstdokumentierend
+- Multiformat Ausgabe ( HTML,JSON,XML)
+- MVC Ansatz
+    a) strikte Trennung von Design, Buissnesslogik und Persitenz
+    b) Trennung von HTML Gerüst, "Style" und "Skin"
+- benutzen von Konstanten wo keine Variablen benötigt werden ( Konfig-Bereich) ???
+- Magic in den Coreklassen, Bussiness Logik ohne Schnickschack in den den abgeleiteten Klassen 
+
+
+zu lösende Probleme
+- einladen von Klassenkonstanten über externen config File
+- OOP Session
+- integrated Debugger
+- integrated Profiler
+- performates Template System
+- Config-File updater
+- integrated Configurator
+- integrated Skin Konfigurator
+- integrated Ad-Partnership Network
+- Runtime konfigration von Sicherheitsfeature ( Tests bei Registrierung und Login )
+- flexible Datenklasse mit Möglichkeit die Daten für bestimmte Ausgabesituation zu behandeln ( htmlentities, DB-escape, intval)
+- Automatisches Befüllen dieser Datenklasse nach einen MySQL Query
+
+
