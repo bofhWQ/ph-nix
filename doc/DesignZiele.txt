@@ -5,21 +5,34 @@ WQ
 
 Lession learned
 vr|framework:
+Positives:
+- ein Eintrittspunkt
+- Alle Eingaben stehen in $in
+- Alle Ausgaben in $output
+- Paradigma Eingabe  -> Verarbeitung -> Ausgabe ( Ein Header kann auch am Ende der Verarbeitung gesetzt werden )
+- Template bietet echte Trennung von Code und Design
+
+
+Negatives:
 - benötigt zu viel Speicher
 - Template Engine nicht performat
+- nutzt PHP4 Syntax
+- Viel unnützer und redundanter Code
 
 WQ:
+Positives:
 - Performance steht im Vordergrund
     a) Minimieren der SQL Statments
     b) Optimieren der SQL Statments
-    c) cachen der Inhalte
+    c) cachen der Inhalte in der Session
+Negatives:
 - Code Qualität miserabel!
 
 
 Ziele:
 - Sicherheit first
 - Performat ( CPU und RAM )
-- Multiplatform Framework
+- Write Once Run everywhere
 
 
 Design Ziele:
@@ -31,7 +44,7 @@ Design Ziele:
 - MVC Ansatz
     a) strikte Trennung von Design, Buissnesslogik und Persitenz
     b) Trennung von HTML Gerüst, "Style" und "Skin"
-- benutzen von Konstanten wo keine Variablen benötigt werden ( Konfig-Bereich)
+- benutzen von Konstanten wo keine Variablen benötigt werden ( Konfig-Bereich) ???
 
 zu lösende Probleme
 - einladen von Klassenkonstanten über externen config File
