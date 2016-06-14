@@ -1,0 +1,50 @@
+Vorgänger Projekte:
+
+vr|framework
+WQ
+
+Lession learned
+vr|framework:
+- benötigt zu viel Speicher
+- Template Engine nicht performat
+
+WQ:
+- Performance steht im Vordergrund
+    a) Minimieren der SQL Statments
+    b) Optimieren der SQL Statments
+    c) cachen der Inhalte
+- Code Qualität miserabel!
+
+
+Ziele:
+- Sicherheit first
+- Performat ( CPU und RAM )
+- Multiplatform Framework
+
+
+Design Ziele:
+- OOP
+- PHP7 mit type declarion der Parameter
+- Konvetion statt Konfiguration
+- Selbstdokumentierend
+- Multiformat Ausgabe ( HTML,JSON,XML)
+- MVC Ansatz
+    a) strikte Trennung von Design, Buissnesslogik und Persitenz
+    b) Trennung von HTML Gerüst, "Style" und "Skin"
+- benutzen von Konstanten wo keine Variablen benötigt werden ( Konfig-Bereich)
+
+zu lösende Probleme
+- einladen von Klassenkonstanten über externen config File
+- OOP Session
+- integrated Debugger
+- integrated Profiler
+- performates Template System
+- Config-File updater
+- integrated Configurator
+- integrated Skin Konfigurator
+- integrated Ad-Partnership Network
+- Runtime konfigration von Sicherheitsfeature ( Tests bei Registrierung und Login )
+- flexible Datenklasse mit Möglichkeit die Daten für bestimmte Ausgabesituation zu behandeln ( htmlentities, DB-escape, intval)
+- Automatisches Befüllen dieser Datenklasse nach einen MySQL Query
+
+

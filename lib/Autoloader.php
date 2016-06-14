@@ -2,6 +2,7 @@
 class ClassAutoloader {
 	public function __construct() {
 		
+		
 		//spl_autoload_register(array($this, 'loader'));
 	}
 	/*
