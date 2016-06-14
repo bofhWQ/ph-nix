@@ -11,7 +11,8 @@ Positives:
 - Alle Ausgaben in $output
 - Paradigma Eingabe  -> Verarbeitung -> Ausgabe ( Ein Header kann auch am Ende der Verarbeitung gesetzt werden )
 - Template bietet echte Trennung von Code und Design
-
+- Grundlage für Mehrsprachigen Portale ( Inhalt + GUI )
+- Mehrere Firmen mit Kooperationsmöglichkeiten ( keine reine Mandanten! )
 
 Negatives:
 - benötigt zu viel Speicher
@@ -25,8 +26,16 @@ Positives:
     a) Minimieren der SQL Statments
     b) Optimieren der SQL Statments
     c) cachen der Inhalte in der Session
+- Struktur für DB Cluster ( SQL Statments getrennt nach dbread und dbwrite , Fallbackstrategie falls ein Slave ausfällt etc )
+- Multiserver Konzept ( Pic-Server, WWW-Server, DB-Server )
 Negatives:
 - Code Qualität miserabel!
+- Code Qualität miserabel!
+- Code Qualität miserabel!
+- Code Qualität miserabel!
+- Code Qualität miserabel!
+- Code Qualität miserabel!
+
 
 
 Ziele:
@@ -45,6 +54,8 @@ Design Ziele:
     a) strikte Trennung von Design, Buissnesslogik und Persitenz
     b) Trennung von HTML Gerüst, "Style" und "Skin"
 - benutzen von Konstanten wo keine Variablen benötigt werden ( Konfig-Bereich) ???
+- Magic in den Coreklassen, Bussiness Logik ohne Schnickschack in den den abgeleiteten Klassen 
+
 
 zu lösende Probleme
 - einladen von Klassenkonstanten über externen config File
