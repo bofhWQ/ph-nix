@@ -1,3 +1,2 @@
 <?php
 Main::run();
-?>

@@ -8,7 +8,9 @@ class Base
 		 if(file_exists($cf))
 		 {
 		 	include $cf;
-		 	$this->config=$config;
+			 if (isset($config)) {
+				 $this->config=$config;
+			 }
 		 }	
 	}
 }
