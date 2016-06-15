@@ -1,7 +1,7 @@
 <?php
-class Singelton
+class Singleton extends Base
 {
-	private  static $instance;
+	protected  static $instance;
 
 	static function getInstance()
 	{
