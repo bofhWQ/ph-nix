@@ -1,0 +1,10 @@
+Alle Klassen, die von Base abgeleitet sind, laden eine Datei unter Config mit selben Namen ein.
+Diese Datei enthält ein Array mit dem Namen $config.
+
+Um eine Selbstdokumentation einen Schritt näher zu kommen, werden beim Instanzieren alle Eigenschaften der Klasse über Reflection angesehen.
+Hat eine Eigenschaft eine phpdoc Comment mit dem Schlüsselwort @config, und ist ein entsprechende Eintrag noch nicht in der config Datei enthalten, wird der ein entsprechender Schlüssel in config angelegt, auf den Defaultwert gesetzt und die Configdatei neu geschrieben.
+
+Dadurch wird sichergestellt, dass die Configdatei stets alle Konfigurationsschalter enthält.
+
+Die Angaben aus der Configdatei werden in die entsprechenden Properties gespeichert.
+

@@ -2,6 +2,7 @@ Vorgänger Projekte:
 
 vr|framework
 WQ
+Flow3
 
 Lession learned
 vr|framework:
@@ -36,9 +37,21 @@ Negatives:
 - Code Qualität miserabel!
 - Code Qualität miserabel!
 
+Flow3:
+PHP mit AOP setzt auf Doctrine auf
+Legt automatisch DB-Tabellen an
 
+Vorteile:
+- Wenn phpdoc Kommentare vorhanden sind wird automatich eine Typüberprüfung durchgeführt
+- Einzelen Module können deaktiviert werden
+- durch AOP und Dependency injection verringert sich der Quelltext enorm
+
+Nachteil:
+- Wenn DB Vorhanden ist, wird es aufwendig
+- Um AOP zu ermöglichen, wird der Quelltext vor der Ausführung modifiziert
 
 Ziele:
+======
 - Sicherheit first
 - Performat ( CPU und RAM )
 - Write Once Run everywhere
@@ -54,21 +67,34 @@ Design Ziele:
     a) strikte Trennung von Design, Buissnesslogik und Persitenz
     b) Trennung von HTML Gerüst, "Style" und "Skin"
 - benutzen von Konstanten wo keine Variablen benötigt werden ( Konfig-Bereich) ???
-- Magic in den Coreklassen, Bussiness Logik ohne Schnickschack in den den abgeleiteten Klassen 
+- Magic in den Coreklassen, Bussiness Logik ohne Schnickschack in den den abgeleiteten Klassen
 
 
 zu lösende Probleme
 - einladen von Klassenkonstanten über externen config File
+Klassen konstanten können so nicht vereinbart werden, config wird in statische Variablen geladen
+
 - OOP Session
+
 - integrated Debugger
+
 - integrated Profiler
+
 - performates Template System
+
 - Config-File updater
+erste Version
+
 - integrated Configurator
+
 - integrated Skin Konfigurator
+
 - integrated Ad-Partnership Network
+
 - Runtime konfigration von Sicherheitsfeature ( Tests bei Registrierung und Login )
+
 - flexible Datenklasse mit Möglichkeit die Daten für bestimmte Ausgabesituation zu behandeln ( htmlentities, DB-escape, intval)
+
 - Automatisches Befüllen dieser Datenklasse nach einen MySQL Query
 
 
