@@ -15,6 +15,12 @@ class Debug extends Singleton
 	 */
 	private $file='';
 	
+	/**
+	 * @config
+	 * @var boolean if false, debug is globally disabled
+	 */
+	private $enable=true;
+	
 	private $buffer;
 	
 	public function __construct()
@@ -34,16 +40,21 @@ class Debug extends Singleton
 	
 	public function out(String $title, $var="" )
 	{
-		$text=$title.$this->getNL();
-		$text.=print_r($var,true).$this->getNL();
-		$text.='---------------------------------------------------------------------';
-		if($this->file == '')
-		{
-			$buffer[]=$text;
-		}
-		else
+		if($this->enable)
 		{
 			
-		}	
+			$text=$title.$this->getNL();
+			$text.=print_r($var,true).$this->getNL();
+			$text.='---------------------------------------------------------------------';
+			if($this->file == '')
+			{
+				$buffer[]=$text;
+			}
+			else
+			{
+			
+			}	
+		}
 	}
+	
 }
