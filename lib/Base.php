@@ -5,7 +5,13 @@ class Base
 	protected $guid;
 	
 	
+
 	public function __construct()
+	{
+		init();
+	}
+
+	private function init()
 	{
 		$this->guid=hash('sha256',get_class($this).time().mt_rand());
 		$cf=new ConfigFile();

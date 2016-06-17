@@ -11,11 +11,6 @@ class Singleton extends Base
 {
 	
 
-	protected function __construct()
-	{
-		//Thou shalt not construct that which is unconstructable!
-	}
-
 	protected function __clone()
 	{
 		

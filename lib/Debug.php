@@ -8,7 +8,7 @@ class Debug extends Singleton
 	 * @config
 	 * @var unknown
 	 */
-	private $format=static::FORMAT_HTML;
+	private $format=Debug::FORMAT_HTML;
 	/**
 	 * @config
 	 * @var unknown
@@ -25,7 +25,9 @@ class Debug extends Singleton
 	
 	public function __construct()
 	{
+		parent::__construct();
 		$buffer=new CompressedArray();
+		
 	}
 	
 	private function getNL()
