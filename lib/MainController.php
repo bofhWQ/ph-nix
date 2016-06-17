@@ -16,6 +16,7 @@ class MainController extends BaseController
 	 * @var unknown
 	 */
 	private static $test1=["test"=>'Hello',"test1"=>'World'];
+	
 	public function test()
 	{
 		echo static::$greeting; 
