@@ -1,6 +1,7 @@
 <?php
-class Debug extends Singleton
+class Debug 
 {
+	use Singleton;
 	const FORMAT_HTML='html';
 	const FORMAT_TEXT='text';
 	
@@ -50,11 +51,12 @@ class Debug extends Singleton
 			$text.='---------------------------------------------------------------------';
 			if($this->file == '')
 			{
-				$buffer[]=$text;
+				//$buffer[]=$text;
+				echo $text;
 			}
 			else
 			{
-			
+				echo $text;
 			}	
 		}
 	}

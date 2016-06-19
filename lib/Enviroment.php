@@ -1,52 +1,70 @@
 <?php
 
 
-class Enviroment
+class Enviroment 
 {
-
-    const ENV_STATE_PRODUCTION = 1;
-    const ENV_STATE_DEVELOPMENT = 2;
-    const ENV_STATE_LOCAL = 3;
-    const ENV_STATE_AUTO = 4;
-
+ 	use Singleton;
+ 		
     /**
-     * @config
+     * @config 
      * @var array
      */
-    private static $localIp=['::1','127.0.0.1'];
-
-    private static $autodiscover {
-        get() {
-            $cf=new ConfigFile(); 
-        }
+    protected static $states = array('auto','dev','prod','local');
+    
+    /**
+     * @config
+     * @var String
+     */
+    public static $state ='auto';
+    
+    /**
+     * @config
+     * @var unknown
+     */
+    protected static $statefilter=array('dev' => array(array()),'prod' => array(array()));
+    
+    
+    public static function getState()
+    {
+    	$result='unknown';
+    	if(self::$state != 'auto')
+    	{
+    		$result=self::$state;
+    	}
+    	else
+    	{
+    		$found=false;
+    		foreach(self::$statefilter as $state => $filters)
+    		{
+    			if(is_array($filters))
+    			{
+    				foreach($filters as $filter)
+    				{
+    					if(isset($filter[0]))
+    					{
+    						$args=null;
+    						if(isset($filter[1]))
+    						{
+    							$args=$filter[1];
+    						}
+    						if($filter[0]::is($args))
+    						{
+    							$result=$state;
+    							$founbd=true;
+    							break;
+    						}
+    					}
+    				}
+    				if($found)
+    				{
+    					break;
+    				}
+    			}
+    		}
+    	}
+    	echo "Result ".$result;
+    	return $result;
     }
-
-    /**
-     * @config
-     * @var int
-     */
-    public static $state {
-        get() {
-            if(Enviroment::$autodiscover)
-            {
-                if(isset($_SERVER['DEVELOPER_DIR']) || !isset($_SERVER['REMOTE_ADDR']) || $_SERVER['REMOTE_ADDR'] == '::1' || $_SERVER['REMOTE_ADDR'] == '127.0.0.1' || $_SERVER['REMOTE_ADDR'] == '192.168.200.113' )
-
-            }
-        }
-    }
-
-    /**
-     * @config
-     * @var bool if
-     */
-    public static $forceHost=true;
-
-
-    /**
-     * @config
-     * @var bool
-     */
-    public static $forceSSL=true;
     
     
 }

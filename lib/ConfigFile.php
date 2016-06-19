@@ -1,6 +1,8 @@
 <?php
 class ConfigFile
 {
+	use DebugTrait;
+	use Singleton;
 	/**
 	 * @config
 	 * @var boolean $write if set write configFile
@@ -17,14 +19,31 @@ class ConfigFile
 	 */
 	private function getConfigFileName($object)
 	{
-		return dirname(__DIR__).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR.get_class($object).'.php';
+		return $this->getConfigDir($object).get_class($object).'.php';
 	}
 	
+	private function getConfigDir($object)
+	{
+		return dirname(__DIR__).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR;
+	}
+	
+	private function getStateConfigFileName($object)
+	{
+		$result='';
+		$state=Enviroment::getState();
+		if($state !== '' )
+		{
+			$result=$this->getConfigDir($object).DIRECTORY_SEPARATOR.$state.DIRECTORY_SEPARATOR.get_class($object).'.php';
+		}
+		return $result;
+	}
 	/**
 	 * Include Config-File
 	 */
 	public function readConfig($object)
 	{
+		
+				
 		$cf=$this->getConfigFileName($object);
 		if(file_exists($cf))
 		{
@@ -34,9 +53,28 @@ class ConfigFile
 		{
 			$config=array();
 		}
+		print_r($object);
+		echo 'get_called_class() = '.get_class($object);
+		if($object !== $this && get_class($object) != 'Enviroment' )
+		{
+			$scf=$this->getStateConfigFileName($object);
+			
+			if(file_exists($scf))
+			{
+				$configDefault=$config;
+				include $scf;
+				foreach($config as $key => $val)
+				{
+					$configDefault[$key]=$val;
+				}
+				$config=$configDefault;
+			}
+			
+		}
 		
 		if($this->write && $this->needConfigUpdate($config,$object))
 		{
+			
 			if(count($config) > 0)
 			{
 				$this->writeConfig($config,$object);
