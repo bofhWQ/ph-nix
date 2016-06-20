@@ -1,7 +1,7 @@
 <?php
 class BaseController extends Base
 {
-	private  $subpath;
+	//private  static $subpath;
 	
 	public static function shedule(array $subpath)
 	{

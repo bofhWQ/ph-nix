@@ -13,16 +13,18 @@ class ConfigFile
 	{
 		$this->readConfig($this);
 	}
+
 	/**
 	 * Get Filename of Config File
+	 * @param $object
 	 * @return string
 	 */
 	private function getConfigFileName($object)
 	{
-		return $this->getConfigDir($object).get_class($object).'.php';
+		return $this->getConfigDir().get_class($object).'.php';
 	}
 	
-	private function getConfigDir($object)
+	private function getConfigDir()
 	{
 		return dirname(__DIR__).DIRECTORY_SEPARATOR.'config'.DIRECTORY_SEPARATOR;
 	}
@@ -33,12 +35,14 @@ class ConfigFile
 		$state=Enviroment::getState();
 		if($state !== '' )
 		{
-			$result=$this->getConfigDir($object).DIRECTORY_SEPARATOR.$state.DIRECTORY_SEPARATOR.get_class($object).'.php';
+			$result=$this->getConfigDir().DIRECTORY_SEPARATOR.$state.DIRECTORY_SEPARATOR.get_class($object).'.php';
 		}
 		return $result;
 	}
+
 	/**
 	 * Include Config-File
+	 * @param $object
 	 */
 	public function readConfig($object)
 	{
@@ -89,11 +93,13 @@ class ConfigFile
 			$prop->setValue($this,$val);
 		}
 	}
+
 	/**
 	 * Look at included Config File, if all Parameter which are marked with @config
 	 * in the configfile. If not write new File
-	 * @param array $cf
-	 * @return boolean
+	 * @param array $config
+	 * @param $object
+	 * @return bool
 	 */
 	private function needConfigUpdate(Array &$config, $object)
 	{
@@ -123,10 +129,11 @@ class ConfigFile
 		}
 		return $result;
 	}
+
 	/**
 	 * If needed write new config File
-	 * @param String $out
-	 * @param String $cf
+	 * @param array $config
+	 * @param object $object
 	 */
 	private function writeConfig(Array $config,$object)
 	{
