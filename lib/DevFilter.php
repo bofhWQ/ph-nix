@@ -5,12 +5,12 @@ class DevFilter
 	 * @config
 	 * @var array
 	 */
-	protected $filters=array();
+	protected static $filters=array();
 	
 	static function isDev()
 	{
-		$result=flase;
-		foreach($filters as $filter)
+		$result=false;
+		foreach(self::$filters as $filter)
 		{
 			if($filter::is())
 			{

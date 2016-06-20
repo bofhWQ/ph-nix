@@ -3,7 +3,7 @@ class CompressedArray extends ArrayObject
 {
 	public function __construct()
 	{
-		super(array());
+		parent::__construct(array());
 	}
 	function offsetSet($key,$value) 
 	{ 

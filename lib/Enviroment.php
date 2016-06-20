@@ -19,7 +19,7 @@ class Enviroment
     
     /**
      * @config
-     * @var unknown
+     * @var array
      */
     protected static $statefilter=array('dev' => array(array()),'prod' => array(array()));
     
@@ -40,17 +40,19 @@ class Enviroment
     			{
     				foreach($filters as $filter)
     				{
+
     					if(isset($filter[0]))
     					{
+                            $currentFilter=$filter[0];
     						$args=null;
     						if(isset($filter[1]))
     						{
     							$args=$filter[1];
     						}
-    						if($filter[0]::is($args))
+    						if($currentFilter::is($args))
     						{
     							$result=$state;
-    							$founbd=true;
+    							$found=true;
     							break;
     						}
     					}

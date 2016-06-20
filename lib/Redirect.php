@@ -5,7 +5,7 @@ class Redirect
 {
     public static function to(String $url)
     {
-        header('Location: '+url);
+        header('Location: '.$url);
         exit();
     }
 }

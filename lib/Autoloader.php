@@ -1,5 +1,5 @@
 <?php
-class ClassAutoloader {
+class Autoloader {
 	public function __construct() {
 		
 		
