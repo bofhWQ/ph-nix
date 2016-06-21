@@ -4,7 +4,7 @@ class AutoFilter
 	public $filter;
 	public $args=array();
 	
-	public function __construct(IFiler $filter, Array $args)
+	public function __construct(IFilter $filter, Array $args)
 	{
 		$this->filter=$filter;
 		$this->args=$args;
@@ -12,7 +12,11 @@ class AutoFilter
 	
 	public function is()
 	{
-		$this->filter::is($args);
+		if (isset($this->filter))
+		{
+			$currentFilter=$this->filter;
+			$currentFilter::is($this->args);
+		}
 	}
 	
 }

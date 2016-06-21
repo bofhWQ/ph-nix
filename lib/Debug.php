@@ -7,12 +7,12 @@ class Debug
 	
 	/**
 	 * @config
-	 * @var unknown
+	 * @var String
 	 */
 	private $format=Debug::FORMAT_HTML;
 	/**
 	 * @config
-	 * @var unknown
+	 * @var String
 	 */
 	private $file='';
 	
@@ -28,6 +28,7 @@ class Debug
 	
 	public function __construct()
 	{
+		//parent::__construct();
 		$buffer=new CompressedArray();
 		$this->register=DebugRegister::getInstance();
 	}
@@ -101,7 +102,6 @@ class Debug
 			if($this->file == '')
 			{
 				$this->buffer[]=$text;
-				//
 			}
 			else
 			{

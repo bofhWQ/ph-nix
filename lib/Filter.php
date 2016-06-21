@@ -1,5 +1,5 @@
 <?php 
-class Filter implements IFiler
+class Filter implements IFilter
 {
 	
 	
