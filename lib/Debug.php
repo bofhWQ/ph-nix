@@ -26,9 +26,7 @@ class Debug
 	
 	public function __construct()
 	{
-		parent::__construct();
-		$buffer=new CompressedArray();
-		
+		$buffer=new CompressedArray();	
 	}
 	
 	private function getNL()
@@ -41,22 +39,56 @@ class Debug
 		return $result;
 	}
 	
-	public function out(String $title, $var="" )
+	private function preFormat(String $text)
+	{
+		if($this->format == static::FORMAT_HTML)
+		{
+		$result= '<pre>'.$text.'</pre>';
+		}
+		else
+		{
+			$result=$text;
+		}
+		return $result;
+	}
+	
+	private function getBackTrace()
+	{
+		$result=debug_backtrace();
+		while(isset($result[0]['class']) && $result[0]['class'] == 'Debug' )
+		{
+			array_shift($result);
+		}
+		while(isset($result[0]['function']) && $result[0]['function'] == 'debug' )
+		{
+			array_shift($result);
+		}
+		return $result;
+	}
+	public function out(String $title, $var="" , $fullbacktrace =false)
 	{
 		if($this->enable)
 		{
-			
-			$text=$title.$this->getNL();
+			$backtrace=$this->getBacktrace();
+			$text='file :'.$backtrace[0]['file'].' Line :'.$backtrace[0]['line'].$this->getNL();
+			$text.=$title.$this->getNL();
 			$text.=print_r($var,true).$this->getNL();
-			$text.='---------------------------------------------------------------------';
+			
+			if($fullbacktrace)
+			{
+				$text.='Backtrace'.$this->getNL();
+				$text.='+++++++++'.$this->getNL();
+				$text.=print_r($backtrace,true).$this->getNL();
+			}
+			$text.='---------------------------------------------------------------------'.$this->getNL();
 			if($this->file == '')
 			{
 				//$buffer[]=$text;
-				echo $text;
+				echo $this->preFormat($text);
 			}
 			else
 			{
-				echo $text;
+				echo $this->preFormat($text);
 			}	
 		}
 	}

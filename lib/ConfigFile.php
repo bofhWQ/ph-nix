@@ -53,8 +53,8 @@ class ConfigFile
 		{
 			$config=array();
 		}
-		print_r($object);
-		echo 'get_called_class() = '.get_class($object);
+		self::debug('Object',$object);
+		self::debug('get_called_class() = '.get_class($object));
 		if($object !== $this && get_class($object) != 'Enviroment' )
 		{
 			$scf=$this->getStateConfigFileName($object);

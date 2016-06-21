@@ -4,6 +4,7 @@
 class Enviroment 
 {
  	use Singleton;
+ 	use DebugTrait;
  		
     /**
      * @config 

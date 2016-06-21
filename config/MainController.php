@@ -1,6 +1,6 @@
 <?php
 $config=array (
-  'greeting' => 'Hello World',
+  'greeting' => 'Hello Universe',
   'test' => 'Hello Tester',
   'test1' => 
   array (
