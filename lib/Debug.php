@@ -24,9 +24,12 @@ class Debug
 	
 	private $buffer;
 	
+	private $register;
+	
 	public function __construct()
 	{
-		$buffer=new CompressedArray();	
+		$buffer=new CompressedArray();
+		$this->register=DebugRegister::getInstance();
 	}
 	
 	private function getNL()
@@ -59,17 +62,31 @@ class Debug
 		{
 			array_shift($result);
 		}
+		/*
 		while(isset($result[0]['function']) && $result[0]['function'] == 'debug' )
 		{
 			array_shift($result);
 		}
+		*/
 		return $result;
 	}
+	
+	private function appendToFile(String $text)
+	{
+		$fh=fopen($this->file,'a+');
+		if($fh)
+		{
+			fwrite($fh,$text);
+			fclose($fh);
+		}
+	}
+	
 	public function out(String $title, $var="" , $fullbacktrace =false)
 	{
 		if($this->enable)
 		{
 			$backtrace=$this->getBacktrace();
+			$this->register->register($backtrace[0]['file'],$title);
 			$text='file :'.$backtrace[0]['file'].' Line :'.$backtrace[0]['line'].$this->getNL();
 			$text.=$title.$this->getNL();
 			$text.=print_r($var,true).$this->getNL();
@@ -80,17 +97,34 @@ class Debug
 				$text.='+++++++++'.$this->getNL();
 				$text.=print_r($backtrace,true).$this->getNL();
 			}
-			$text.='---------------------------------------------------------------------'.$this->getNL();
+			$text.='----------------------------------------------------------------------------------------'.$this->getNL();
 			if($this->file == '')
 			{
-				//$buffer[]=$text;
-				echo $this->preFormat($text);
+				$this->buffer[]=$text;
+				//
 			}
 			else
 			{
-				echo $this->preFormat($text);
+				$this->appendToFile($this->preFormat($text));
 			}	
 		}
 	}
 	
+	protected function register(String $file, String $title)
+	{
+		
+	}
+	
+	public function dump()
+	{
+		foreach($this->buffer as $val)
+		{
+			echo $this->preFormat($val);
+		}
+	}
+	
+	public function showRegister()
+	{
+		echo $this->preFormat(print_r($this->register,true));
+	}
 }

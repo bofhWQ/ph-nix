@@ -5,5 +5,8 @@ class Main extends Base
 	{
 		
 		MainController::shedule(['test']);
+		self::debugDump();
+		self::debugRegister();
+		print_r($_SESSION);
 	}	
 }
