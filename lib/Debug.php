@@ -56,7 +56,7 @@ class Debug
 		return $result;
 	}
 	
-	private function getBackTrace()
+	private function getBacktrace()
 	{
 		$result=debug_backtrace();
 		while(isset($result[0]['class']) && $result[0]['class'] == 'Debug' )
