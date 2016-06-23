@@ -5,6 +5,7 @@ Trait DebugTrait
 	 * Decoration for use Debug
 	 * @param String $title
 	 * @param string $var
+	 * @param bool $fulltracedump
 	 */
 	protected static function debug(String $title, $var="", $fulltracedump=false)
 	{
