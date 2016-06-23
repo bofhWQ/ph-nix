@@ -110,10 +110,6 @@ class Debug
 		}
 	}
 	
-	protected function register(String $file, String $title)
-	{
-		
-	}
 	
 	public function dump()
 	{

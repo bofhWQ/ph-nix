@@ -1,22 +1,16 @@
 <?php
-class IPFilter implements IFilter
+class IPFilter extends Base implements IFilter
 {
-	public static function is(Array $params)
+	public static function is($val)
 	{
 		$result=false;
-		/*
-		$data=explode('.',$_SERVER['SERVER_ADDR']);
-		foreach($params as $val)
+		self::debug("SERVER_ADDR",$_SERVER['SERVER_ADDR']);
+		self::debug("Looking for",$val);
+		self::debug("preg_match",preg_match("/^$val/",$_SERVER['SERVER_ADDR']));
+		if(preg_match("/^$val/",$_SERVER['SERVER_ADDR']) == 1)
 		{
-		*/
-			if(preg_match('/^$val/',$_SERVER['SERVER_ADDR']) == 1)
-			{
-				$result=true;
-				//break;
-			}
-		/*
+			$result=true;
 		}
-		*/
 		return $result;
 	}
 }

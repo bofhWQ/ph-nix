@@ -1,17 +1,12 @@
 <?php
 class HostFilter implements IFilter
 {
-	public static function is(Array $params)
+	public static function is($val)
 	{
 		$result=false;
-		$data=explode('.',$_SERVER['SERVER_NAME']);
-		foreach($params as $val)
+		if (preg_match("/^$val/",$_SERVER['SERVER_NAME']) == 1)
 		{
-			if ($data[0] == $val)
-			{
-				$result=true;
-				break;
-			}
+			$result=true;
 		}
 		return $result;
 	}

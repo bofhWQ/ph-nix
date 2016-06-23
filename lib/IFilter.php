@@ -2,5 +2,5 @@
 Interface IFilter
 {
 	
-	public static function is(Array $args);
+	public static function is($args);
 }

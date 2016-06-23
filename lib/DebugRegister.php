@@ -1,30 +1,41 @@
 <?php 
 class DebugRegister extends ArrayObject
 {
-	use Singleton;
 	public function __construct()
 	{
 		//ToDo: Restore from Session
 		parent::__construct();
-		$_SESSION['DebugRegister']=$this;
+		
+	}
+	
+	public static function getInstance()
+	{
+		if (!isset($_SESSION['DebugRegister']) || $_SESSION['DebugRegister'] === null) 
+		{
+			$_SESSION['DebugRegister'] = new static();
+		}
+		return $_SESSION['DebugRegister'];
 	}
 	
 	public function register(String $file, String $title)
 	{
 		$found=false;
-		foreach($this as $object)
+		if(isset($this[$file]))
 		{
-			if( $object->file == $file && $object->title == $title)
+			foreach($this[$file] as $object)
 			{
-				$object->counter++;
-				$found=true;
-				break;
+				if( $object->title == $title)
+				{
+					$object->counter++;
+					$found=true;
+					break;
+				}
 			}
 		}
 		if(!$found)
 		{
 			$object=new DebugRegisterObject($file,$title);
-			$this[]=$object;
+			$this[$file][]=$object;
 		}
 		
 	}
