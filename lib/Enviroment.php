@@ -1,7 +1,7 @@
 <?php
 
 
-class Enviroment 
+class Enviroment extends Base
 {
  	use Singleton;
  	use DebugTrait;
@@ -27,7 +27,13 @@ class Enviroment
     
     public static function getState()
     {
-    	$result='unknown';
+    	$instance=self::getInstance();
+    	return $instance->getInternalState();
+    }
+    
+    protected function getInternalState()
+    {
+    $result='unknown';
     	if(self::$state != 'auto')
     	{
     		$result=self::$state;
@@ -37,25 +43,33 @@ class Enviroment
     		$found=false;
     		foreach(self::$statefilter as $state => $filters)
     		{
+    			self::debug("Looking for state ",$state);
     			if(is_array($filters))
     			{
     				foreach($filters as $filter)
     				{
-
+    					self::debug("Looking for filter ",$filter);
     					if(isset($filter[0]))
     					{
                             $currentFilter=$filter[0];
-    						$args=null;
-    						if(isset($filter[1]))
-    						{
-    							$args=$filter[1];
-    						}
-    						if($currentFilter::is($args))
-    						{
-    							$result=$state;
-    							$found=true;
-    							break;
-    						}
+                            if(class_exists($currentFilter))
+                            {
+    							$args=null;
+    							if(isset($filter[1]))
+    							{
+    								$args=$filter[1];
+    							}
+    							if($currentFilter::is($args))
+    							{
+    								$result=$state;
+    								$found=true;
+    								break;
+    							}
+                            }
+                            else
+                            {
+                            	self::debug("Filter does not exist",$currentFilter);
+                            }
     					}
     				}
     				if($found)
@@ -65,9 +79,7 @@ class Enviroment
     			}
     		}
     	}
-    	echo "Result ".$result;
+    	self::debug("Result ",$result);
     	return $result;
     }
-    
-    
 }

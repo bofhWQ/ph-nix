@@ -8,3 +8,10 @@ Dadurch wird sichergestellt, dass die Configdatei stets alle Konfigurationsschal
 
 Die Angaben aus der Configdatei werden in die entsprechenden Properties gespeichert.
 
+Über Enviroment kann eine bestimmte Umgebung abgefragt werden.
+Hierzu werden verschiedene states definiert. Neben den definiertenStates gibt es ein "auto" state. in diesen state versucht die Klasse anhand von definierten Filtern den State zu erkennen
+
+Hierzu werden der Reihe nach alle States und in den einzelnen States die definierten Filter abgefragt.
+Gibt einer der Filter true zurück, ist er entsprechende State erkannt und die Suche wird beendet!
+
+Ist im Verzeichnis config/$state ein File mit dem selben Namen wie die Klasse verfügbar, wird auch diese eingeladen. Einstellungen im state Verzeichnis überschreiben Einstellungen im config-Verzeichnis
