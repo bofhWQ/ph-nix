@@ -98,3 +98,27 @@ erste Version
 - Automatisches Befüllen dieser Datenklasse nach einen MySQL Query
 
 
+Sicherheit:
+===========
+- Daten sind so lange wie möglich raw
+- Escape geschieht dort wo es gebraucht wird, so weit wie möglich automatisch:
+- Das heisst in der DB Klasse werden Daten: über mysql_real_escape formatiert
+- Da in dynamischen Querys auch Daten gibt, die andere Ansprüche stellen muss es eine Möglichkeit geben dem SQL Statment
+  Formatierungshinweise zu geben. Vorbild : SafeMySQL
+- Templatesystem gibt es pro Format eine Standardformatierungsfunktion ( für HTML : HTML-Entities )
+- Formatierung der Daten sollte nicht im Conroller, sonder im Template geshehen ( Datum, Zeit Formatierungen )
+- I Template werden Filter benötigt, die bei Bedarf eine andere Formatierung erzwingen ( JS, Attribute usw. )
+
+
+
+Templatesystem:
+===============
+
+In der 1. Version wurde vorallem auf die Trennung von Logik und Darstellung Wert gelegt.
+Das führt dazu, dass Formatierungen ( z.B. Datum ) im Controller, oder sogar schon im Modell gemacht werden
+Diese Funktionen sollen ins Template wandern.
+Neben diesen sollten auch die Sicherheit ins Template wandern. ( Vorbild: TWIG )
+
+
+
+
